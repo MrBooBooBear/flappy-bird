@@ -27,6 +27,7 @@ func newGame():
 	score = 0
 	pipes.clear()
 	$Bird.reset()
+	$PipeTimer.stop()
 	# Generates first pipes
 	generatePipes()
 
@@ -34,13 +35,13 @@ func newGame():
 func _input(event):
 	if gameOver == false:
 		if event is InputEventMouseButton:
-			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 				startGame()
 			else:
 				if $Bird.flying:
 					$Bird.flap()
 
-# Starting game
+# Starting game (called after first click)
 func startGame():
 	# Set variables
 	gameRunning = true

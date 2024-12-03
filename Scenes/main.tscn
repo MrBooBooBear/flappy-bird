@@ -20,6 +20,7 @@ offset = Vector2(432, 384)
 [node name="Ground" parent="." instance=ExtResource("4_8lxnx")]
 
 [node name="PipeTimer" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.9
+autostart = true
 
 [connection signal="timeout" from="PipeTimer" to="." method="_on_pipe_timer_timeout"]
