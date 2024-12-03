@@ -13,6 +13,7 @@ const pipeRange : int = 200
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	screenSize = get_window().size
 	newGame()
 
 func newGame():
@@ -38,4 +39,10 @@ func startGame():
 	$Bird.flap()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if gameRunning:
+		scroll += scrollSpeed
+		# Reset scroll
+		if scroll >= screenSize.x:
+			scroll = 0
+		# Move ground node
+		$Ground.position.x = -scroll
